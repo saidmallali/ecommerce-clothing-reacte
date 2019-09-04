@@ -26,6 +26,10 @@ class SignIn extends React.Component {
     this.setState({ [name]: value });
   };
 
+  handleClick = e => {
+    e.preventDefault();
+    signInWithGoogle();
+  };
   render() {
     return (
       <div className="sign-in">
@@ -48,12 +52,13 @@ class SignIn extends React.Component {
             required
             label="Password"
           />
-          <CustomBotton type="submit">Sign In</CustomBotton>
+          <div className="buttons">
+            <CustomBotton type="submit">Sign In</CustomBotton>
 
-          <CustomBotton onClick={signInWithGoogle}>
-            {" "}
-            Sign In with Google{" "}
-          </CustomBotton>
+            <CustomBotton isGoogleSignIn onClick={this.handleClick}>
+              Sign In with Google
+            </CustomBotton>
+          </div>
         </form>
       </div>
     );
